@@ -56,7 +56,7 @@ function minimum(ar) {
     if (ar.length === 0) {
         return undefined
     } else {
-        for (test of ar) {
+        for (let test of ar) {
             if (low > test) {
                 low = test
             }
@@ -64,13 +64,6 @@ function minimum(ar) {
         return low
     }
 }
-
-
-
-
-
-
-
 
 
 // 6. There are many techniques to sort arrays in programming. Your programming
@@ -92,13 +85,48 @@ function minimum(ar) {
 // var arrayCopy = array.slice(0);
 //
 // Think about why this works.
-//
+
+
+function getIndex(array, goal) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === goal) {
+            return i
+        }
+    }
+}
+
+
+function selectionSort(a1) {
+    let array = a1.slice(0);
+    let final = []
+    for (let i = 0; i < a1.length; i++) {
+        final.push(minimum(array))
+        array.splice(getIndex(array, minimum(array)), 1)
+    } return final
+}
+//there HAS to be a built in way to getIndex something, and I'll try to streamline this code later on. Ideally I'd like one function, not two.
+
+
+
 // Note 2: Selection sort can be implemented using one array. Read the explanation at
 // https://courses.cs.vt.edu/csonline/Algorithms/Lessons/SelectionSort/index.html
 // to see how. This may make more sense to you.
+
+
+
+
 
 // 7. Create a function called `textList` that takes an array and joins its elements
 // into a string separated by commas.
 //
 // For example, `textList(['Cadence', 'Ordel', 'Marion'])` results in the string
 // `"Cadence,Ordel,Marion"`.
+
+function textList(names) {
+    let string = ""
+    for (let name of names) {
+        string += name
+        string += ","
+    }
+    return string.substring(0, (string.length - 1))
+}
