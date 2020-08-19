@@ -41,29 +41,26 @@ function average(ar) {
     if (ar.length === 0) {
         return undefined
     } else {
-        for (let idx of ar) {
-            avg += idx
-        }
-        return avg /= ar.length
+        avg = sum(ar)
     }
+    return avg /= ar.length
 }
+
+
 
 // 5. Create a function called "minimum" that takes an array of numbers and
 // returns the smallest number in that array.
 
 function minimum(ar) {
     let low = ar[0]
-    if (ar.length === 0) {
-        return undefined
-    } else {
-        for (let test of ar) {
-            if (low > test) {
-                low = test
-            }
+    for (let test of ar) {
+        if (low > test) {
+            low = test
         }
-        return low
     }
+    return low
 }
+
 
 
 // 6. There are many techniques to sort arrays in programming. Your programming
